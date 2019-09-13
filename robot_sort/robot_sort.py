@@ -131,24 +131,7 @@ class SortingRobot:
         Sort the robot's list.
         """
         
-        for i in range(0, len(self._list) - 1):
-            cur_index = i  
-            smallest_index = cur_index
-           
-    
-            #Loop through array and if the current index > then any of the items, set the cur index to that item
-            #Loop through i + 1 -- the next item through the length of the array
-            for j in range(i+1, len(self._list)):
-                if self._list[cur_index] > self._list[j]:
-                    cur_index = j
-            ####
-            temp = self._list[i] #temp variable is == the current position in the outside loop
         
-            self._list[i] = self._list[cur_index] #current position of outside loop is set equal to the new current index from the inside loop
-        
-            self._list[cur_index] = temp #current index is set equal to the temp variable
-        return self._list
-
 
 if __name__ == "__main__":
     # Test our your implementation from the command line

@@ -24,7 +24,7 @@ class SortingRobot:
         SortingRobot takes a list and sorts it.
         """
         self._list = arr          # The list the robot is tasked with sorting
-        self._item = None       # The item the robot is holding
+        self._item = None     # The item the robot is holding
         self._position = 0      # The list position the robot is at
         self._light = "OFF"     # The state of the robot's light
         self._time = 0          # A time counter (stretch)
@@ -130,6 +130,136 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
+        #self._position
+        
+        #self.move_right()
+       
+        print(f'YOU ARE HOLDING: {self._item}')
+        print(f'YOU ARE AT {self._position}')
+     
+       
+        if self.can_move_right():
+            self.set_light_on()
+        else:
+            self.set_light_off()
+            self.swap_item()
+            print(f'YOU ARE HOLDING: {self._item}')
+            
+       
+    
+        
+        if self.compare_item() == 1: # if item held is greater ##
+            if self.light_is_on():
+                self.move_right()
+                self.sort()
+        elif self.compare_item() == -1: #if item held is less
+            if self.light_is_on() == False:
+                self.move_left()
+                print('you moved left')
+            else:
+                self.swap_item()
+                print(f'you are now holding: {self._item}')
+            self.move_right()
+           # self.sort()
+        elif self.compare_item() == 0:
+            self.move_right()
+            self.sort()
+       
+        else: # if item held is equal
+            self.swap_item()
+            self.move_right()
+
+            self.sort()
+           # print(f'YOU ARE HOLDINGss: {self._item}')
+            # self.swap_item()
+            # #print(f'YOU ARE HOLDINsssG: {self._item}')
+            # self.move_right()
+            # self.sort()
+        # if self.light_is_on():
+        #     if self.can_move_right():
+        #         if self.compare_item():
+        #             print('swapped item')
+        #             self.swap_item()
+        #             print('moved left')
+        #             self.move_left()
+        #             print('swapped item again')
+        #             self.swap_item()
+        #             self.move_right()
+        #             self.sort()
+                
+                    
+        #         else:
+        #             print('MOVED RIGHT')
+        #             self.move_right()
+        #             self.sort()
+        #     else:
+        #         self.set_light_off()
+        #         print('Light is OFF')
+               
+
+        # else: 
+        #     print('can move left')
+        #     if self.can_move_left():
+        #         print('moved left')
+        #         self.move_left()
+                
+        #     else:
+        #         print('did nt move left')
+        #         self.swap_item()
+        #         print(f'{self._item}')
+
+        # def bubble_sort( arr ):
+        #     for i in range(len(arr)): 
+        #         for j in range(len(arr)-1):
+        #             if arr[j] > arr[j+1]:
+        #                 temp = arr[j]
+        #                 arr[j] = arr[j+1]
+        #                 arr[j+1] = temp
+        #     return arr
+                #self.set_light_on()
+
+            #     self.move_left()
+            #     print('left')
+            #     i +=1
+            # elif self.can_move_left() == False:
+            #     self.can_move_right()
+            # if self._item > self._position:
+            #     if self.can_move_right():
+            #         self.swap_item()
+            #         self.move_right()
+            #         print(f'YOU ARE AT {self._position}')
+            #         print(f'You are holding now: {self._item}')
+            #         i +=1
+            #     else:
+            #         self.move_left()       
+            #         i+=1     
+        
+            # else:
+            #     if self.can_move_right():
+            #         self.move_right()
+            #         i +=1
+            #     else:
+            #         print('false')
+            #         self.move_left()
+            #         self.swap_item()
+            #         i +=1
+            # print(f'YOU ARE AT {self._position}')
+            # print(f'YOU ARE HOLDING: {self._item}')
+        
+        
+      
+        
+        # print(f'YOU ARE NOWW HOLDINGs: {self._item}')
+        
+        
+        
+        #self.compare_item()
+            
+
+        #self.swap_item()
+        # for i in range(0, len(arr) - 1):
+        #     cur_index = i  
+        #     smallest_index = cur_index
         
         
 

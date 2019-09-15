@@ -130,155 +130,41 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        #self._position
-        
-        #self.move_right()
-       
-        print(f'YOU ARE HOLDING: {self._item}')
-        print(f'YOU ARE AT {self._position}')
-        
-        if self.light_is_on():
-            print('true')
-        else:
-            print('false')
-       
-        # if self.can_move_right():
-        #     self.set_light_on()
-        # else:
-        #     self.set_light_off()
-        #     if self.compare_item() == 1:
-        #         self.swap_item()
-        #         print(f'YOU ARE HOLDING: {self._item}')
-        if self.can_move_right() == False:
-            if self.compare_item() == 1:
-                self.set_light_off()
-                self.swap_item()
-                print(f'YOU ARE HOLDING: {self._item}')
-
-        elif self.can_move_left() == False:
-            self.set_light_on()
-
-        
-        if self.compare_item() == 1: # if item held is greater ##
-            if self.light_is_on():            
-                self.move_right()
-                self.sort()
-            else:
+        # Fill this out
+        # Bubble Sort
+        self.set_light_on() ## turn light on
+        while self.light_is_on(): ## while the light is on
+            ## will run when it is at the beginning of the list
+            # print('start of function again')
+            self.move_to_right() # call the sort right fn
+            # WHILE light is on and WHILE move left is true then loop this FN... this will move back to the beginning
+            while(self.can_move_left()): #reset to the far left
+                # print("you moved left")
                 self.move_left()
-                if self.compare_item() == 1:
-                    self.swap_item()
-                    self.sort()
-        elif self.compare_item() == -1: #if item held is less
-            if self.light_is_on() == False:
-                self.move_left()
-                print(f'YOU ARE AT {self._position}')
-                self.sort()
-            else:
-                self.move_left()
-                self.swap_item()
-                self.sort()
-                    
-           # self.sort()
-        elif self.compare_item() == 0:
-            self.move_right()
-            self.sort()
-       
-        else: # if item held is equal
-            self.swap_item()
-            self.move_right()
-            if self.light_is_on():
-                self.sort()
-           # print(f'YOU ARE HOLDINGss: {self._item}')
-            # self.swap_item()
-            # #print(f'YOU ARE HOLDINsssG: {self._item}')
-            # self.move_right()
-            # self.sort()
-        # if self.light_is_on():
-        #     if self.can_move_right():
-        #         if self.compare_item():
-        #             print('swapped item')
-        #             self.swap_item()
-        #             print('moved left')
-        #             self.move_left()
-        #             print('swapped item again')
-        #             self.swap_item()
-        #             self.move_right()
-        #             self.sort()
-                
-                    
-        #         else:
-        #             print('MOVED RIGHT')
-        #             self.move_right()
-        #             self.sort()
-        #     else:
-        #         self.set_light_off()
-        #         print('Light is OFF')
-               
-
-        # else: 
-        #     print('can move left')
-        #     if self.can_move_left():
-        #         print('moved left')
-        #         self.move_left()
-                
-        #     else:
-        #         print('did nt move left')
-        #         self.swap_item()
-        #         print(f'{self._item}')
-
-        # def bubble_sort( arr ):
-        #     for i in range(len(arr)): 
-        #         for j in range(len(arr)-1):
-        #             if arr[j] > arr[j+1]:
-        #                 temp = arr[j]
-        #                 arr[j] = arr[j+1]
-        #                 arr[j+1] = temp
-        #     return arr
-                #self.set_light_on()
-
-            #     self.move_left()
-            #     print('left')
-            #     i +=1
-            # elif self.can_move_left() == False:
-            #     self.can_move_right()
-            # if self._item > self._position:
-            #     if self.can_move_right():
-            #         self.swap_item()
-            #         self.move_right()
-            #         print(f'YOU ARE AT {self._position}')
-            #         print(f'You are holding now: {self._item}')
-            #         i +=1
-            #     else:
-            #         self.move_left()       
-            #         i+=1     
-        
-            # else:
-            #     if self.can_move_right():
-            #         self.move_right()
-            #         i +=1
-            #     else:
-            #         print('false')
-            #         self.move_left()
-            #         self.swap_item()
-            #         i +=1
-            # print(f'YOU ARE AT {self._position}')
-            # print(f'YOU ARE HOLDING: {self._item}')
-        
-        
-      
-        
-        # print(f'YOU ARE NOWW HOLDINGs: {self._item}')
-        
-        
-        
-        #self.compare_item()
             
-
-        #self.swap_item()
-        # for i in range(0, len(arr) - 1):
-        #     cur_index = i  
-        #     smallest_index = cur_index
         
+
+    def move_to_right(self):
+        self.set_light_off() # Turn light off -- this keeps the above function from calling the move left loop
+        while(self.can_move_right()): # While it can move right  -- stay in this function  until the end of the list
+            self.swap_item() ## swap the item 
+            # print(f'you are now holding {self._item}') 
+            self.move_right() ## move right
+            # print('you moved right')
+            if self.compare_item() == 1: # if the item held is greater then swap, if not, move left again (per line 159)
+                self.swap_item() # swap if greater
+                self.set_light_on() ## turn light on -- this is for when you reach the end of the list, this will not exit the loop until then because of line 149 being true
+                # print('you turned light on')
+                # print(f'you are holding {self._item}')
+            self.move_left() ## Per line 154, if the item is not greater, go back left (to original spot) 
+            # print('you moved left')
+            self.swap_item() ## and swap
+            # print(f'you are now holding {self._item}')
+            self.move_right()  ## move right -- this will restart the loop and go back to line 150.
+            # print(f'you moved right')
+
+    ### commented out prints, or else the robot would take too long
+
         
 
 if __name__ == "__main__":

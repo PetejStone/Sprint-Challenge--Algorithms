@@ -136,30 +136,48 @@ class SortingRobot:
        
         print(f'YOU ARE HOLDING: {self._item}')
         print(f'YOU ARE AT {self._position}')
-     
-       
-        if self.can_move_right():
-            self.set_light_on()
+        
+        if self.light_is_on():
+            print('true')
         else:
-            self.set_light_off()
-            self.swap_item()
-            print(f'YOU ARE HOLDING: {self._item}')
-            
+            print('false')
        
-    
+        # if self.can_move_right():
+        #     self.set_light_on()
+        # else:
+        #     self.set_light_off()
+        #     if self.compare_item() == 1:
+        #         self.swap_item()
+        #         print(f'YOU ARE HOLDING: {self._item}')
+        if self.can_move_right() == False:
+            if self.compare_item() == 1:
+                self.set_light_off()
+                self.swap_item()
+                print(f'YOU ARE HOLDING: {self._item}')
+
+        elif self.can_move_left() == False:
+            self.set_light_on()
+
         
         if self.compare_item() == 1: # if item held is greater ##
-            if self.light_is_on():
+            if self.light_is_on():            
                 self.move_right()
                 self.sort()
+            else:
+                self.move_left()
+                if self.compare_item() == 1:
+                    self.swap_item()
+                    self.sort()
         elif self.compare_item() == -1: #if item held is less
             if self.light_is_on() == False:
                 self.move_left()
-                print('you moved left')
+                print(f'YOU ARE AT {self._position}')
+                self.sort()
             else:
+                self.move_left()
                 self.swap_item()
-                print(f'you are now holding: {self._item}')
-            self.move_right()
+                self.sort()
+                    
            # self.sort()
         elif self.compare_item() == 0:
             self.move_right()
@@ -168,8 +186,8 @@ class SortingRobot:
         else: # if item held is equal
             self.swap_item()
             self.move_right()
-
-            self.sort()
+            if self.light_is_on():
+                self.sort()
            # print(f'YOU ARE HOLDINGss: {self._item}')
             # self.swap_item()
             # #print(f'YOU ARE HOLDINsssG: {self._item}')

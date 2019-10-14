@@ -8,19 +8,19 @@
 
 ##python
 a) a = 0
-while (a < n _ n _ n):
-a = a + n \* n
+while (a < n * n * n):
+a = a + n * n
 
 #####
 
 b) sum = 0
-for i in range(n):
+for i in range(n): ##n
 j = 1
-while j < n:
-j \*= 2
+while j < n:  log(n)
+j *= 2
 sum += 1
 
-#Runtime is 0(n^2) because it is running a while inside a for -- Also, you always want to look for the highest possible input, in this case it is n^2
+#Runtime is n(log(n)) because it is running a while inside a for -- Also, you always want to look for the highest possible input, in this case it is n^2
 
 #####
 

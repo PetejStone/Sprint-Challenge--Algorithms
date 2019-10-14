@@ -116,13 +116,7 @@ class SortingRobot:
 
     #################### Plan for Sorting ############
        # SWAP 
-        ### Iterative swap example - loops through values, if one is greater, swap values
-        ##### if current index was 2      .
-        ##                          [ 1,2,4,3,5 ]
-        ## inside loop found that 4 is > 3, so new cur_index is 3 (3) -- > cur_index = arr[3]
-        ### temp = arr[2] (4) - so temp value is 4
-        #### arr[2] == arr[3] -- so 4 is now = 3 -> [1,2,3,3,5]
-        #### arr[cur_index] = temp   --> aka  -->  (arr[3]) == arr[2] -> [1,2,3,4,5]
+        ## bubble sort
 
       ##################################################
 
